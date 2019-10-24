@@ -1,3 +1,29 @@
+$XS:     320px;   
+$MXS :   425px;
+$SM:     768px;  
+$MD:    1024px;   
+$XL:   1170px;     
+
+// media queries
+
+@mixin responsive($canvas) {
+  @if $canvas == XS {
+   @media only screen and (min-width: $XS) and (max-width: $SM) { @content; } 
+  }
+  @else if $canvas == MXS {
+    @media only screen and (min-width: $MXS) and (max-width: $SM) { @content; } 
+   }
+  @else if $canvas == SM {
+   @media only screen and (min-width: $SM) { @content; } 
+  }
+  @else if $canvas == MD {
+   @media only screen and (min-width: $MD) { @content; } 
+  }
+  @else if $canvas == XL {
+   @media only screen and (min-width: $XL) { @content; } 
+  }
+}
+
 .text-white{
     color:white;
 }
@@ -38,4 +64,10 @@
 }
 .mb50{
     margin-bottom: 50px;
+}
+
+.flex-wrap-mobile{
+    @include responsive(XS) {
+        flex-wrap: wrap;
+    }
 }
